@@ -32,16 +32,13 @@ module.exports = {
   // These are the "entry points" to our application.
   // This means they will be the "root" imports that are included in JS bundle.
   // The first two entry points enable "hot" CSS and auto-refreshes for JS.
-  entry: {
-    dev: 'react-error-overlay',
-    vendor: [
-      require.resolve('./polyfills'),
-      'react',
-      'react-dom',
-      'react-router-dom',
-    ],
-    app: ['react-dev-utils/webpackHotDevClient', paths.appIndexJs]
-  },
+  entry: [
+    'react-hot-loader/patch', 
+    'react-dev-utils/webpackHotDevClient',
+    'react-error-overlay',
+    require.resolve('./polyfills'),
+    paths.appIndexJs
+  ],
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
     path: paths.appBuild,
@@ -160,6 +157,10 @@ module.exports = {
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
           cacheDirectory: true,
+
+          plugins: [
+            'react-hot-loader/babel'
+          ]
         },
       },
       // "postcss" loader applies autoprefixer to our CSS.
