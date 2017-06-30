@@ -26,6 +26,8 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "koa": "^2.3.0",
+    "koa-static": "^3.0.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.0.0",
     "postcss-loader": "2.0.6",
@@ -46,11 +48,14 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
-    "cross-env": "^5.0.1"
+    "cross-env": "^5.0.1",
+    "ignore-loader": "^0.1.2"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src node scripts/start.js",
+    "start:server": "node server",
     "build": "cross-env NODE_PATH=src node scripts/build.js",
+    "build:server": "cross-env NODE_PATH=src node scripts/build.server.js",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
